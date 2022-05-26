@@ -10,6 +10,9 @@ def index(request):
 def login(request):
     return render(request, 'login.html') 
 
+def dashboard(request):
+    return render(request, 'dashboard.html')     
+
 def AdminDepartamentosIndex(request):
     return render(request, 'admin-departamentos-index.html') 
 
