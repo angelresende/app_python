@@ -16,22 +16,36 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from app.views import home, index, login,dashboard 
-from app.views import AdminDepartamentosCreate, AdminDepartamentosIndex, AdminDepartamentosShow, AdminRamaisCreate, AdminRamaisIndex, AdminRamaisShow, AdminUsersCreate, AdminUsersIndex, AdminUsersShow
+from app.views import DepartamentosIndex, FormDepartamentos, DepartamentoCreate, DepartamentoShow, DepartamentoEdit, DepartamentoUpdate, DepartamentoDelete
+from app.views import FornecedoresIndex, FormFornecedores, FornecedorCreate, FornecedorShow, FornecedorEdit, FornecedorUpdate, FornecedorDelete
+from app.views import UsersIndex, FormUsers, UserCreate, UserShow, UserEdit, UserUpdate, UserDelete
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home),
-    path('index/', index),
-    path('login/', login),
-    path('dashboard/', dashboard),
-    path('departamentos/criar/', AdminDepartamentosCreate),
-    path('departamentos/index/', AdminDepartamentosIndex),
-    path('departamentos/show/', AdminDepartamentosShow),
-    path('ramais/criar/', AdminRamaisCreate),
-    path('ramais/index/', AdminRamaisIndex),
-    path('ramais/show/', AdminRamaisShow),
-    path('users/criar/', AdminUsersCreate),
-    path('users/index/', AdminUsersIndex),
-    path('users/show/', AdminUsersShow),
+    path('', home, name='home'),
+    path('index/', index, name='index'),
+    path('login/', login, name='login'),
+    path('dashboard/', dashboard, name='dashboard'),
+    path('departamentos/', DepartamentosIndex, name='departamentos'),
+    path('departamentos_form/',FormDepartamentos , name='departamentos_form'),  
+    path('criar_departamento/',DepartamentoCreate, name='criar_departamento'),      
+    path('visualizar_departamento/<int:pk>/', DepartamentoShow, name='visualizar_departamento'),
+    path('editar_departamento/<int:pk>/', DepartamentoEdit, name='editar_departamento'),
+    path('atualizar_departamento/<int:pk>/', DepartamentoUpdate, name='atualizar_departamento'),
+    path('deletar_departamento/<int:pk>/', DepartamentoDelete, name='deletar_departamento'),
+    path('fornecedores/', FornecedoresIndex, name='fornecedores'),
+    path('fornecedores_form/',FormFornecedores , name='fornecedores_form'),  
+    path('criar_fornecedor/',FornecedorCreate, name='criar_fornecedor'),      
+    path('visualizar_fornecedor/<int:pk>/', FornecedorShow, name='visualizar_fornecedor'),
+    path('editar_fornecedor/<int:pk>/', FornecedorEdit, name='editar_fornecedor'),
+    path('atualizar_fornecedor/<int:pk>/', FornecedorUpdate, name='atualizar_fornecedor'),
+    path('deletar_fornecedor/<int:pk>/', FornecedorDelete, name='deletar_fornecedor'),
+    path('usuarios/', UsersIndex, name='usuarios'),
+    path('usuarios_form/',FormUsers , name='usuarios_form'),  
+    path('criar_usuario/', UserCreate, name='criar_usuario'),      
+    path('visualizar_usuario/<int:pk>/', UserShow, name='visualizar_usuario'),
+    path('editar_usuario/<int:pk>/', UserEdit, name='editar_usuario'),
+    path('atualizar_usuario/<int:pk>/', UserUpdate, name='atualizar_usuario'),
+    path('deletar_usuario/<int:pk>/', UserDelete, name='deletar_usuario'),
 ]
