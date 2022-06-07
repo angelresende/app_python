@@ -1,16 +1,27 @@
 from django.shortcuts import redirect, render
-from app.forms import DepartamentosForm, FornecedoresForm, UsersForm
-from app.models import Departamentos, Fornecedores, Users
+from app.forms import DepartamentosForm, FornecedoresForm, UsuariosForm, RegistrarForm
+from app.models import Departamentos, Fornecedores, Usuarios
 
 # Create your views here.
 def home(request):
     return render(request, 'sobre.html') 
 
 def index(request):
-    return render(request, 'index.html') 
+    data = {}
+    data['db'] = Fornecedores.objects.all()
+    return render(request, 'index.html', data) 
 
 def login(request):
-    return render(request, 'login.html') 
+    data = {}
+    data['form'] = RegistrarForm()
+    return render(request, 'login.html', data)
+
+def logarSistema(request):
+    formLogin = RegistrarForm(request.POST or None)
+    if formLogin.is_valid():
+        formLogin.save()
+        return redirect('dashboard') 
+
 
 def dashboard(request):
     return render(request, 'dashboard.html')     
@@ -62,9 +73,9 @@ def FornecedoresIndex(request):
 
 def FormFornecedores(request):
     data = {}
-    data['form'] = FornecedoresForm()
-    
-    return render(request, 'fornecedores-form.html', data)
+    data['form'] = FornecedoresForm()  
+    departamentos = Departamentos.objects.all()  
+    return render(request, 'fornecedores-form.html', data, {'departamentos': departamentos })
 
 def FornecedorCreate(request):
     formFornecedores = FornecedoresForm(request.POST or None)
@@ -96,43 +107,43 @@ def FornecedorDelete(request, pk):
     db.delete()
     return redirect('fornecedores') 
 
-def UsersIndex(request):
+def UsuariosIndex(request):
     data = {}
-    data['db'] = Users.objects.all()
-    return render(request, 'users-index.html', data) 
+    data['db'] = Usuarios.objects.all()
+    return render(request, 'usuarios-index.html', data) 
 
-def FormUsers(request):
+def FormUsuarios(request):
     data = {}
-    data['form'] = UsersForm()
-    return render(request, 'users-form.html', data)
+    data['form'] = UsuariosForm()
+    return render(request, 'usuarios-form.html', data)
 
-def UserCreate(request):
-    formUsers = UsersForm(request.POST or None)
-    if formUsers.is_valid():
-        formUsers.save()
-        return redirect('users') 
+def UsuarioCreate(request):
+    formusuarios = UsuariosForm(request.POST or None)
+    if formusuarios.is_valid():
+        formusuarios.save()
+        return redirect('usuarios') 
 
-def UserShow(request, pk):
+def UsuariosShow(request, pk):
     data = {}
-    data['db'] = Users.objects.get(pk=pk)
-    return render(request, 'users-show.html', data) 
+    data['db'] = Usuarios.objects.get(pk=pk)
+    return render(request, 'usuarios-show.html', data) 
 
-def UserEdit(request, pk):
+def UsuarioEdit(request, pk):
     data = {}
-    data['db'] = Users.objects.get(pk=pk)
-    data['form'] = UsersForm(instance=data['db'])
-    return render(request, 'users-form.html', data) 
+    data['db'] = Usuarios.objects.get(pk=pk)
+    data['form'] = UsuariosForm(instance=data['db'])
+    return render(request, 'usuarios-form.html', data) 
 
-def UserUpdate(request, pk):
+def UsuarioUpdate(request, pk):
     data = {}
-    data['db'] = Users.objects.get(pk=pk)
-    formUsers = UsersForm(request.POST or None, instance=data['db'])
-    if formUsers.is_valid():
-        formUsers.save()
-        return redirect('users') 
+    data['db'] = Usuarios.objects.get(pk=pk)
+    formusuarios = UsuariosForm(request.POST or None, instance=data['db'])
+    if formusuarios.is_valid():
+        formusuarios.save()
+        return redirect('usuarios') 
 
-def UserDelete(request, pk):
-    db = Users.objects.get(pk=pk)
+def UsuarioDelete(request, pk):
+    db = Usuarios.objects.get(pk=pk)
     db.delete()
-    return redirect('users') 
+    return redirect('usuarios') 
 

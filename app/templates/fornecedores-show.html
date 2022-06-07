@@ -72,7 +72,7 @@
                         </li>
 
                         <li class="nav-item has-treeview menu-open">
-                            <a href="/users" class="nav-link">
+                            <a href="/usuarios" class="nav-link">
                                 <p>
                                 Usuários
                                 </p>
@@ -92,81 +92,33 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Novo Fornecedor</h1>
+                            <h1 class="m-0">Fornecedor</h1>
                         </div>
                     </div>
                 </div>
             </div>  
             <div class="container">
                 <div class="col-md-12 mb-5">   
-                    <form method="POST" action="#" enctype="multipart/form-data">
-                        <div class="row">
-                            <div class="col-md-12 form-group">
-                                <div class="form-group">
-                                    <label for="department">Departamento ao qual sera integrado:</label> 
-                                    <select class="form-control" name="department" id="department" required>
-                                        <option disabled selected="" value="">Informe o departamento</option>
-
-                                    </select>
-                                </div> 
-                            </div>
-
-                            <div class="col-md-9 form-group">
-                                <label for="nome">Razão Social:</label>           
-                                <input class="form-control" name="nome" id="nome" placeholder="Informe o nome do colaborador" value="" required>
-                            </div>
-                
-                            <div class="col-md-3 form-group">
-                                <label for="ramal">CNPJ:</label>
-                                <input class="form-control" id="cnpj" name="cnpj" type="text" maxlength="4" placeholder="Digite o CNPJ" class="campo" value="" required>
-                            </div>           
-                            
-                            <div class="form-group col-md-3">
-                                <label for="cep">Digite seu CEP</label>
-                                <input type="text" name="cep" class="form-control" id="cep" placeholder="ex: 01001234" value="" maxlength="8" required>
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label for="logradouro">Logradouro</label>
-                                <input type="text" name="logradouro" class="form-control" id="logradouro" placeholder="Endereço" value="" required>
-                            </div>
-
-                            <div class="form-group col-md-3">
-                                <label for="numero">Número</label>
-                                <input type="text" name="numero" class="form-control" id="numero" placeholder="Número" value="" required>
-                            </div>
-
-                            <div class="form-group col-md-3">
-                                <label for="complemento">Complemento</label>
-                                <input type="text" name="complemento" class="form-control" id="complemento" placeholder="Complemento" value="">
-                            </div>
-
-                            <div class="form-group col-md-2">
-                                <label for="uf">Estado</label>
-                                <input type="text" name="uf" class="form-control" id="uf" placeholder="UF" value="" id="uf" required>
-                            </div>
-
-                            <div class="form-group col-md-7">
-                                <label for="localidade">Localidade</label>
-                                <input type="text" name="localidade" class="form-control" id="localidade" placeholder="Localidade" value="" required>
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label for="telefone">Telefone</label>
-                                <input type="text" name="telefone" class="form-control" id="telefone" placeholder="DDD + número" value="" maxlength="15" required>
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label for="email">E-mail</label>
-                                <input type="email" name="email" class="form-control" id="email" placeholder="E-mail" value="" required>
-                            </div>
-                
-                            <div class="col-md-12 form-group">
-                                <button type="submit" class="btn btn-primary ">Salvar</button>
-                                <a href="/fornecedores/index"><button type="button" class="btn btn-warning">Voltar</button></a> 
-                            </div>
-                        </div>                    
-                    </form>                
+                    <div class="col-md-12 mb-5">   
+                        <p><strong style="color:#007bff">Departamento: </strong> {{ db.departamento_id.nome }}</p>  
+                        <p><strong style="color:#007bff">Razão Social: </strong> {{ db.nome }}</p>
+                        <p><strong style="color:#007bff">Nome Fantasia: </strong> {{ db.nome_fantasia }}</p>
+                        <p><strong style="color:#007bff">CNPJ: </strong> {{ db.cnpj }}</p>
+                        <p><strong style="color:#007bff">Inscrição Estadual: </strong> {{ db.inscricao_estadual }}</p>
+                        <p><strong style="color:#007bff">CEP: </strong> {{ db.cep }}</p> 
+                        <p><strong style="color:#007bff">Logradouro: </strong> {{ db.logradouro }}</p> 
+                        <p><strong style="color:#007bff">Número </strong> {{ db.numero }}</p> 
+                        <p><strong style="color:#007bff">Complemento: </strong> {{ db.complemento }}</p> 
+                        <p><strong style="color:#007bff">Estado: </strong> {{ db.uf }}</p> 
+                        <p><strong style="color:#007bff">Cidade: </strong> {{ db.localidade }}</p> 
+                        <p><strong style="color:#007bff">Telefone: </strong> {{ db.telefone }}</p> 
+                        <p><strong style="color:#007bff">E-mail </strong> {{ db.email }}</p> 
+                        <p><strong style="color:#007bff">Status: </strong> {{ db.status }}</p>                
+                    </div>
+                    </div>
+                    <div class="col-md-12">
+                        <a href="/forncedores"><button type="button" class="btn btn-warning">Voltar</button></a> 
+                    </div>             
                 </div> 
              </div>
         </div>    

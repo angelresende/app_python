@@ -23,7 +23,7 @@
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
-
+        <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-dark navbar-light">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
@@ -43,7 +43,9 @@
                 </li>
             </ul>
         </nav>
+        <!-- /.navbar -->
 
+        <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="/index" class="brand-link">
@@ -70,93 +72,53 @@
                         </li>
 
                         <li class="nav-item has-treeview menu-open">
-                            <a href="/users" class="nav-link">
+                            <a href="/usuarios" class="nav-link">
                                 <p>
                                 Usuários
                                 </p>
                             </a>
-                        </li>                                
+                        </li>
+
+                    
+                
                     </ul>
                 </nav>
             
             </div>
 
         </aside> 
-
         <div class="content-wrapper">
-            <div class="col-md-12">
-                <a href="/usuarios_form/" class="btn btn-danger btn-icon-text mt-2">
-                    <i class="fas fa-user"></i>
-                   Cadastrar novo usuário
-                </a>
-            </div>
             <div class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Usuários Cadastrados</h1>
+                            <h1 class="m-0">Usuário</h1>
                         </div>
                     </div>
                 </div>
             </div>  
-            <div class="container">
-                <div class="col-md-12">
-                    <div class="table-responsive">
-                        <table class="table table-striped" id="table">
-                            <thead>
-                              <tr>
-                                <th scope="col">Administrador</th>
-                                <th scope="col">Nome</th>
-                                <th scope="col">E-mail</th>
-                                <th scope="col">Status</th>
-                                <th scope="col">Ações</th>
-                              </tr>
-                              <tr>
-                                <th><input type="text" id="txtColuna1"/></th>
-                                <th><input type="text" id="txtColuna2"/></th>
-                                <th><input type="text" id="txtColuna3"/></th>
-                                <th><input type="text" id="txtColuna4"/></th>
-                            </tr> 
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td style="color:#007bff"><b></b></th>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                              </tr>
-                            </tbody>
-                          </table>
-                      </div>                
-        
-                </div>
+
+             <div class="container">
+                <div class="col-md-12 mb-5">   
+                    <form method="POST" id="formUsers" name="formUsers" action="{%if db%}/atualizar_usuario/{{db.id}}{%else%}/criar_usuario/ {% endif %}">
+                        {% csrf_token %}
+                        <div class="row"> 
+                            <table>
+                                {{ form.as_table }}
+                            </table>              
+                
+                            <div class="col-md-12 form-group">
+                                <button type="submit" class="btn btn-primary ">Salvar</button>
+                                <a href="/usuarios"><button type="button" class="btn btn-warning">Voltar</button></a> 
+                            </div>
+                        </div>                    
+                    </form>                
+                </div> 
              </div>
         </div>    
-    </div> 
-    
+    </div>    
+
 {% load static %}
 <script src="{% static 'javascript.js' %}"></script>
-   
 </body>
-<script>
-    $(function(){
-	$("#table input").keyup(function(){		
-
-		var index = $(this).parent().index();
-		var nth = "#table td:nth-child("+(index+1).toString()+")";
-		var valor = $(this).val().toUpperCase();
-		$("#table tbody tr").show();
-		$(nth).each(function(){
-			if($(this).text().toUpperCase().indexOf(valor) < 0){
-				$(this).parent().hide();
-			}
-		});
-	});
-
-	$("#table input").blur(function(){
-		$(this).val("");
-	});	
-});
-</script>
 </html>

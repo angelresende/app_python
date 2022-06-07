@@ -41,3 +41,41 @@
         form.addEventListener('submit',sendForm,false);
     }
 })(window,document);
+
+$("form").on("change", ".file-upload-field", function(){ 
+    $(this).parent(".file-upload-wrapper").attr("data-text",  $(this).val().replace(/.*(\/|\\)/, '') );
+});
+
+function preencheCampos(json) { 
+    document.querySelector('#id_logradouro').value = json.logradouro; 
+    document.querySelector('#id_localidade').value = json.localidade; 
+    document.querySelector('#id_uf').value = json.uf; 
+}
+
+const inputValue = document.querySelector("#id_cep");
+let zipCode = "";
+
+inputValue.addEventListener("keyup", () => {
+    zipCode = inputValue.value;
+    if(zipCode)
+    if(zipCode.length === 8) {
+        if(!isNaN(zipCode)){
+            inputValue.value = `${zipCode.substr(0,5)}-${zipCode.substr(5,9)}`;
+
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
+                    if (!xmlhttp.response.includes("erro")) {
+                        preencheCampos(JSON.parse(xmlhttp.responseText));
+                    } else {
+                        alert("Digite somente o formato válido!<br> 00000000");
+                    }
+                }
+            };
+            xmlhttp.open("GET", "https://viacep.com.br/ws/"+zipCode+"/json", true);
+            xmlhttp.send();
+        } 
+       
+    }
+});
+

@@ -72,7 +72,7 @@
                         </li>
 
                         <li class="nav-item has-treeview menu-open">
-                            <a href="/users" class="nav-link">
+                            <a href="/usuarios" class="nav-link">
                                 <p>
                                 Usuários
                                 </p>
@@ -100,24 +100,27 @@
             <div class="container">
                 <div class="col-md-12 mb-5">   
                     <form method="POST" id="formFornecedores" name="formFornecedores" action="{%if db%}/atualizar_fornecedor/{{db.id}}{%else%}/criar_fornecedor/ {% endif %}">
+                        {% csrf_token %}
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 <div class="form-group">
-                                    <label for="department">Departamento ao qual sera integrado:</label> 
-                                    <select class="form-control" name="department" id="department" required>
+                                    <label for="departamento_id">Departamento ao qual sera integrado:</label> 
+                                    <select class="form-control" name="departamento_id" required id="departamento_id">
                                         <option disabled selected="" value="">Informe o departamento</option>
-
+                                        {% for departamento in departamentos %}
+                                        <option value="{{ departamento.id }}">{{ departamento.nome }}</option>
+                                        {% endfor %}
                                     </select>
                                 </div> 
                             </div>
 
                             <table>
                                 {{ form.as_table }}
-                                </table>              
+                            </table>              
                 
                             <div class="col-md-12 form-group">
                                 <button type="submit" class="btn btn-primary ">Salvar</button>
-                                <a href="/fornecedores/index"><button type="button" class="btn btn-warning">Voltar</button></a> 
+                                <a href="/fornecedores"><button type="button" class="btn btn-warning">Voltar</button></a> 
                             </div>
                         </div>                    
                     </form>                

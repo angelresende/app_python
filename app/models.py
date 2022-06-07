@@ -5,7 +5,7 @@ class Departamentos(models.Model):
     nome = models.CharField(max_length=200)
     status = models.BooleanField(default=True)
 
-class Users(models.Model):
+class Usuarios(models.Model):
     nome = models.CharField(max_length=150)
     email = models.CharField(max_length=100)
     senha = models.CharField(max_length=30)
@@ -13,6 +13,7 @@ class Users(models.Model):
     status = models.BooleanField(default=True)
 
 class Fornecedores(models.Model):
+    departamento = models.ForeignKey(Departamentos, on_delete=models.PROTECT, related_name='fornecedor')
     nome = models.CharField(max_length=200)
     nome_fantasia = models.CharField(max_length=100)
     cnpj = models.CharField(max_length=14)

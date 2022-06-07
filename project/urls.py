@@ -18,7 +18,7 @@ from django.urls import path
 from app.views import home, index, login,dashboard 
 from app.views import DepartamentosIndex, FormDepartamentos, DepartamentoCreate, DepartamentoShow, DepartamentoEdit, DepartamentoUpdate, DepartamentoDelete
 from app.views import FornecedoresIndex, FormFornecedores, FornecedorCreate, FornecedorShow, FornecedorEdit, FornecedorUpdate, FornecedorDelete
-from app.views import UsersIndex, FormUsers, UserCreate, UserShow, UserEdit, UserUpdate, UserDelete
+from app.views import UsuariosIndex, FormUsuarios, UsuarioCreate, UsuariosShow, UsuarioEdit, UsuarioUpdate, UsuarioDelete
 
 
 urlpatterns = [
@@ -41,11 +41,11 @@ urlpatterns = [
     path('editar_fornecedor/<int:pk>/', FornecedorEdit, name='editar_fornecedor'),
     path('atualizar_fornecedor/<int:pk>/', FornecedorUpdate, name='atualizar_fornecedor'),
     path('deletar_fornecedor/<int:pk>/', FornecedorDelete, name='deletar_fornecedor'),
-    path('usuarios/', UsersIndex, name='usuarios'),
-    path('usuarios_form/',FormUsers , name='usuarios_form'),  
-    path('criar_usuario/', UserCreate, name='criar_usuario'),      
-    path('visualizar_usuario/<int:pk>/', UserShow, name='visualizar_usuario'),
-    path('editar_usuario/<int:pk>/', UserEdit, name='editar_usuario'),
-    path('atualizar_usuario/<int:pk>/', UserUpdate, name='atualizar_usuario'),
-    path('deletar_usuario/<int:pk>/', UserDelete, name='deletar_usuario'),
+    path('usuarios/', UsuariosIndex, name='usuarios'),
+    path('usuarios_form/',FormUsuarios , name='usuarios_form'),  
+    path('criar_usuario/', UsuarioCreate, name='criar_usuario'),      
+    path('visualizar_usuario/<int:pk>/', UsuariosShow, name='visualizar_usuario'),
+    path('editar_usuario/<int:pk>/', UsuarioEdit, name='editar_usuario'),
+    path('atualizar_usuario/<int:pk>/', UsuarioUpdate, name='atualizar_usuario'),
+    path('deletar_usuario/<int:pk>/', UsuarioDelete, name='deletar_usuario'),
 ]

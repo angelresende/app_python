@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Departamentos</title>
+    <title>Fornecedores</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.2.0/js/adminlte.min.js" integrity="sha512-KBeR1NhClUySj9xBB0+KRqYLPkM6VvXiiWaSz/8LCQNdRpUm38SWUrj0ccNDNSkwCD9qPA4KobLliG26yPppJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -70,7 +70,7 @@
                         </li>
 
                         <li class="nav-item has-treeview menu-open">
-                            <a href="/users" class="nav-link">
+                            <a href="/usuarios" class="nav-link">
                                 <p>
                                 Usuários
                                 </p>
@@ -122,13 +122,21 @@
                             </tr> 
                             </thead>
                             <tbody>
-                              <tr>
-                                <td style="color:#007bff"><b></b></th>
-                                <td></td>
-                                <td></td>
-                              </tr>
+                                {% for dbs in db %}
+                                <tr>
+                                    <td style="color:#007bff"><b>{{dbs.departamento}}</b></td>
+                                    <td style="color:#007bff"><b>{{dbs.nome}}</b></td>   
+                                    <td style="color:#007bff"><b>{{dbs.nome_fantasia}}</b></td> 
+                                    <td style="color:#007bff"><b>{{dbs.telefone}}</b></td> 
+                                    <td>
+                                        <a href="/visualizar_fornecedor/{{dbs.id}}" class="btn btn-dark">Visualizar</a>
+                                        <a href="/editar_fornecedor/{{dbs.id}}" class="btn btn-info">Editar</a>
+                                        <a href="/deletar_fornecedor/{{dbs.id}}" class="btn btn-danger btnDel">Deletar</a>
+                                    </td>
+                                </tr>
+                                {% endfor %} 
                             </tbody>
-                          </table>
+                        </table>
                       </div>                
         
                 </div>

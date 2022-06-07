@@ -69,7 +69,7 @@
                         </li>
 
                         <li class="nav-item has-treeview menu-open">
-                            <a href="/users" class="nav-link">
+                            <a href="/usuarios" class="nav-link">
                                 <p>
                                 Usuários
                                 </p>
@@ -96,52 +96,15 @@
             </div>  
             <div class="container">
                 <div class="col-md-12 mb-5">   
-                    <form method="POST" action="#" enctype="multipart/form-data">
-                        <div class="row">
-                            <div class="col-md-6 form-group">
-                                <label for="nome">Nome</label>
-                                <input type="text" name="nome" class="form-control" value="" required>
-                            </div>
-                
-                            <div class="col-md-6 form-group">
-                                <label for="email">Email</label>
-                                <input type="text" name="email" class="form-control" value="" required>
-                            </div>
-                
-                            <div class="col-md-6 form-group">
-                                <label for="senha">Senha</label>
-                                <input type="password" name="senha" class="form-control" required>
-                            </div>
-                
-                            <div class="col-md-6 mt-5 form-group">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-                                                <input type="checkbox" name="administrador" class="form-check-input" value="1">
-                                                Administrador
-                                            <i class="input-helper"></i></label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-                                                <input type="checkbox" name="ativo" class="form-check-input" checked value="1">
-                                                Ativo
-                                            <i class="input-helper"></i></label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                
-                            <div class="col-md-12 form-group">
-                                <button type="submit" class="btn btn-primary ">Salvar</button>
-                                <a href="/users"><button type="button" class="btn btn-warning">Voltar</button></a> 
-                            </div>
-                        </div>                    
-                    </form>                
+                    <p><strong style="color:#007bff">Nome: </strong> {{ db.nome }}</p>
+                    <p><strong style="color:#007bff">E-mail: </strong> {{ db.email }}</p>
+                    <p><strong style="color:#007bff">Administrador: </strong> {{ db.administrador }}</p>
+                    <p><strong style="color:#007bff">Status: </strong> {{ db.status }}</p>                 
                 </div>
-             </div>
+                </div>
+                <div class="col-md-12">
+                    <a href="/usuarios"><button type="button" class="btn btn-warning">Voltar</button></a> 
+                </div>
         </div>    
     </div>    
    
