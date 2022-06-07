@@ -3,17 +3,14 @@ from django.db import models
 # Create your models here.
 class Departamentos(models.Model):
     nome = models.CharField(max_length=200)
-    status = models.BooleanField(default=True)
+    telefone = models.CharField(max_length=20)
+    email = models.CharField(max_length=100)
 
 class Usuarios(models.Model):
     nome = models.CharField(max_length=150)
     email = models.CharField(max_length=100)
     senha = models.CharField(max_length=30)
-    administrador = models.BooleanField(default=False) 
-    status = models.BooleanField(default=True)
-
 class Fornecedores(models.Model):
-    departamento = models.ForeignKey(Departamentos, on_delete=models.PROTECT, related_name='fornecedor')
     nome = models.CharField(max_length=200)
     nome_fantasia = models.CharField(max_length=100)
     cnpj = models.CharField(max_length=14)
@@ -26,4 +23,3 @@ class Fornecedores(models.Model):
     localidade = models.CharField(max_length=100)
     telefone = models.CharField(max_length=20)
     email = models.CharField(max_length=100)
-    status = models.BooleanField(default=True)

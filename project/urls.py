@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from app.views import home, index, login,dashboard 
+from app.views import home, index,index_fornecedores,index_departamentos, login, dashboard 
 from app.views import DepartamentosIndex, FormDepartamentos, DepartamentoCreate, DepartamentoShow, DepartamentoEdit, DepartamentoUpdate, DepartamentoDelete
 from app.views import FornecedoresIndex, FormFornecedores, FornecedorCreate, FornecedorShow, FornecedorEdit, FornecedorUpdate, FornecedorDelete
 from app.views import UsuariosIndex, FormUsuarios, UsuarioCreate, UsuariosShow, UsuarioEdit, UsuarioUpdate, UsuarioDelete
@@ -25,6 +25,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
     path('index/', index, name='index'),
+    path('index_fornecedores/', index_fornecedores, name='index_fornecedores'),
+    path('index_departamentos/', index_departamentos, name='index_departamentos'),
     path('login/', login, name='login'),
     path('dashboard/', dashboard, name='dashboard'),
     path('departamentos/', DepartamentosIndex, name='departamentos'),

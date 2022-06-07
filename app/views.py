@@ -1,4 +1,5 @@
 from django.shortcuts import redirect, render
+from django.http import HttpResponse
 from app.forms import DepartamentosForm, FornecedoresForm, UsuariosForm, RegistrarForm
 from app.models import Departamentos, Fornecedores, Usuarios
 
@@ -7,9 +8,17 @@ def home(request):
     return render(request, 'sobre.html') 
 
 def index(request):
+    return render(request, 'index.html') 
+
+def index_fornecedores(request):
     data = {}
     data['db'] = Fornecedores.objects.all()
-    return render(request, 'index.html', data) 
+    return render(request, 'index_fornecedores.html', data) 
+
+def index_departamentos(request):
+    data = {}
+    data['db'] = Departamentos.objects.all()
+    return render(request, 'index_departamentos.html', data) 
 
 def login(request):
     data = {}
@@ -72,10 +81,9 @@ def FornecedoresIndex(request):
     return render(request, 'fornecedores-index.html', data) 
 
 def FormFornecedores(request):
-    data = {}
-    data['form'] = FornecedoresForm()  
-    departamentos = Departamentos.objects.all()  
-    return render(request, 'fornecedores-form.html', data, {'departamentos': departamentos })
+    data = {}   
+    data['form'] = FornecedoresForm()          
+    return render(request, 'fornecedores-form.html', data)
 
 def FornecedorCreate(request):
     formFornecedores = FornecedoresForm(request.POST or None)
@@ -146,4 +154,3 @@ def UsuarioDelete(request, pk):
     db = Usuarios.objects.get(pk=pk)
     db.delete()
     return redirect('usuarios') 
-

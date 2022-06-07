@@ -108,7 +108,6 @@
                         <table class="table table-striped" id="table">
                             <thead>
                               <tr>
-                                <th scope="col">Departamento</th>
                                 <th scope="col">Razão Social</th>
                                 <th scope="col">Nome Fantasia</th>
                                 <th scope="col">Telefone</th>
@@ -118,13 +117,11 @@
                                 <th><input type="text" id="txtColuna1"/></th>
                                 <th><input type="text" id="txtColuna2"/></th>
                                 <th><input type="text" id="txtColuna3"/></th>
-                                <th><input type="text" id="txtColuna4"/></th>
                             </tr> 
                             </thead>
                             <tbody>
                                 {% for dbs in db %}
                                 <tr>
-                                    <td style="color:#007bff"><b>{{dbs.departamento}}</b></td>
                                     <td style="color:#007bff"><b>{{dbs.nome}}</b></td>   
                                     <td style="color:#007bff"><b>{{dbs.nome_fantasia}}</b></td> 
                                     <td style="color:#007bff"><b>{{dbs.telefone}}</b></td> 

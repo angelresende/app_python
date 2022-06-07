@@ -15,14 +15,39 @@
           <a href="/login" class="btn btn-primary" style="background-color:#2d7788 ;">Acessar painel administrativo</a>
         </div> 
         <div class="col-md-12 mt-2" style="background-color: #007bff;height: 50px;">
-            <h3 style="text-align: center; color:#fff;  padding-top: 0.5rem;">O que você deseja pesquisar?</h3>             
+            <h3 style="text-align: center; color:#fff;  padding-top: 0.5rem;">Fornecedores...</h3>             
         </div>
 
-        <div class="col-md-12 mt-4">
-          <a href="/index_departamentos"><button type="button" class="btn btn-warning">Departamentos</button></a> 
-          <a href="/index_fornecedores"><button type="button" class="btn btn-warning">Fornecedores</button></a>
-      </div>
-
+        <div class="col-md-12">
+            <div class="table-responsive">
+              <table class="table table-striped" id="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Razão Social</th>
+                    <th scope="col">Nome Fantasia</th>
+                    <th scope="col">Telefone</th>
+                  </tr>
+                  <tr>
+                    <th><input type="text" id="txtColuna1"/></th>
+                    <th><input type="text" id="txtColuna2"/></th>
+                    <th><input type="text" id="txtColuna3"/></th>
+                </tr> 
+                </thead>
+                <tbody>
+                    {% for dbs in db %}
+                    <tr>
+                        <td style="color:#007bff"><b>{{dbs.nome}}</b></td>   
+                        <td style="color:#007bff"><b>{{dbs.nome_fantasia}}</b></td> 
+                        <td style="color:#007bff"><b>{{dbs.telefone}}</b></td> 
+                    </tr>
+                    {% endfor %} 
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-12 mt-2"  style="text-align: left;">
+        <a href="/index" class="btn btn-warning">Voltar</a>
+        </div> 
+        
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
