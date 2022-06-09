@@ -96,7 +96,7 @@
             </div>  
             <div class="container">
                 <div class="col-md-12 mb-5">   
-                    <form method="POST" id="formDepartamentos" name="formDepartamentos" action="{%if db%}/atualizar_departamento/{{db.id}}{%else%}/criar_departamento/ {% endif %}">
+                    <form  name="formDepartamentos" id="formDepartamentos" action="{% if db %}/atualizar_departamento/{{db.id}}/{%else%}/criar_departamento/ {% endif %}" method="post">
                         {% csrf_token %}
                         <div class="row">
                             <table>

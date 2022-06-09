@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from app.views import home, index,index_fornecedores,index_departamentos, login, dashboard 
+from app.views import home, index,index_fornecedores,index_departamentos, login, dashboard, JsonDepartamentos, JsonFornecedores, JsonUsuarios 
 from app.views import DepartamentosIndex, FormDepartamentos, DepartamentoCreate, DepartamentoShow, DepartamentoEdit, DepartamentoUpdate, DepartamentoDelete
 from app.views import FornecedoresIndex, FormFornecedores, FornecedorCreate, FornecedorShow, FornecedorEdit, FornecedorUpdate, FornecedorDelete
 from app.views import UsuariosIndex, FormUsuarios, UsuarioCreate, UsuariosShow, UsuarioEdit, UsuarioUpdate, UsuarioDelete
@@ -50,4 +50,8 @@ urlpatterns = [
     path('editar_usuario/<int:pk>/', UsuarioEdit, name='editar_usuario'),
     path('atualizar_usuario/<int:pk>/', UsuarioUpdate, name='atualizar_usuario'),
     path('deletar_usuario/<int:pk>/', UsuarioDelete, name='deletar_usuario'),
+    path('json_usuarios/', JsonUsuarios, name='json_usuarios'),
+    path('json_departamentos/', JsonDepartamentos, name='json_departamentos'),
+    path('json_fornecedores/', JsonFornecedores, name='json_fornecedores'),
+    
 ]

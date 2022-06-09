@@ -1,5 +1,8 @@
+from pickle import TRUE
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
+from django.http import JsonResponse
+import json
 from app.forms import DepartamentosForm, FornecedoresForm, UsuariosForm, RegistrarForm
 from app.models import Departamentos, Fornecedores, Usuarios
 
@@ -154,3 +157,16 @@ def UsuarioDelete(request, pk):
     db = Usuarios.objects.get(pk=pk)
     db.delete()
     return redirect('usuarios') 
+
+def JsonUsuarios(request):
+    data = list(Usuarios.objects.values())
+    return JsonResponse(data, safe=False)
+
+def JsonDepartamentos(request):
+    data = list(Departamentos.objects.values())
+    return JsonResponse(data, safe=False)
+
+
+def JsonFornecedores(request):
+    data = list(Fornecedores.objects.values())
+    return JsonResponse(data, safe=False)
